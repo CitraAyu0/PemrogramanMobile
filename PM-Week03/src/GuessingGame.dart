@@ -10,7 +10,16 @@ void main() {
 
   while (tebakan != angkaRahasia) {
     stdout.write("Masukkan tebakan: ");
-    tebakan = int.parse(stdin.readLineSync()!);
+
+    String? input = stdin.readLineSync();
+    int? angka = int.tryParse(input ?? "");
+
+    if (angka == null) {
+    print("Input harus angka!");
+    continue;
+    }
+
+    tebakan = angka;
 
     if (tebakan > angkaRahasia) {
       print("Terlalu besar!");
